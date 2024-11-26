@@ -1,0 +1,176 @@
+import numpy as np
+import pandas as pd
+import matplotlib as mt
+
+data = []
+csv_file = open('gender_submission.csv')
+columns = next(csv_file).split(',')
+print(columns)
+for rows in csv_file:
+    rows = rows.removesuffix('\n')
+    data.append([float(row) for row in rows.split(',')])
+print(data)
+
+
+
+
+
+
+
+
+import pandas as pd
+df = pd.read_csv('TitanicDataset.csv')
+print(df.to_string()) 
+
+
+
+
+
+
+
+
+
+import pandas as pd
+
+# Load the dataset
+df = pd.read_csv('TitanicDataset.csv')
+
+# Print only the specified column, for example, 'Name'
+print(df['Ticket'].to_string())
+
+
+
+
+
+
+
+
+
+import pandas as pd
+
+# Load the dataset
+df = pd.read_csv('TitanicDataset.csv')
+# Check for missing values
+missing_values = df.isnull().sum()
+# Print the count of missing values for each column
+print(missing_values)
+
+
+
+
+
+
+
+
+
+
+
+import pandas as pd
+
+# Load the dataset
+df = pd.read_csv('TitanicDataset.csv')
+# Drop rows with any missing values
+df_cleaned = df.dropna(axis=0)
+# Optionally, print the cleaned DataFrame
+print(df_cleaned.to_string())
+
+
+
+
+
+
+
+
+
+
+
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load the dataset
+df = pd.read_csv('TitanicDataset.csv')
+
+# Set the style for seaborn
+sns.set(style='whitegrid')
+
+# Univariate Analysis
+
+# Histogram for Age
+plt.figure(figsize=(10, 6))
+sns.histplot(df['Age'].dropna(), bins=30, kde=True)
+plt.title('Distribution of Age')
+plt.xlabel('Age')
+plt.ylabel('Frequency')
+plt.show()
+
+# Countplot for Survival
+plt.figure(figsize=(8, 5))
+sns.countplot(data=df, x='Survived', palette='Set2')
+plt.title('Count of Survival')
+plt.xlabel('Survived (0 = No, 1 = Yes)')
+plt.ylabel('Count')
+plt.xticks(ticks=[0, 1], labels=['No', 'Yes'])
+plt.show()
+
+# Bivariate Analysis
+
+# Survival Rate by PClass
+plt.figure(figsize=(8, 5))
+sns.barplot(data=df, x='Pclass', y='Survived', palette='Set1')
+plt.title('Survival Rate by PClass')
+plt.xlabel('Passenger Class')
+plt.ylabel('Survival Rate')
+plt.xticks(ticks=[0, 1, 2], labels=['1st Class', '2nd Class', '3rd Class'])
+plt.show()
+
+# Survival Rate by Sex
+plt.figure(figsize=(8, 5))
+sns.barplot(data=df, x='Sex', y='Survived', palette='Set2')
+plt.title('Survival Rate by Sex')
+plt.xlabel('Sex')
+plt.ylabel('Survival Rate')
+plt.xticks(ticks=[0, 1], labels=['Male', 'Female'])
+plt.show()
+
+
+
+
+
+
+
+
+
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load the dataset
+df = pd.read_csv('TitanicDataset.csv')
+
+# Calculate the correlation matrix
+correlation_matrix = df.corr()
+
+# Set the size of the heatmap
+plt.figure(figsize=(10, 8))
+
+# Create the heatmap
+sns.heatmap(correlation_matrix, annot=True, fmt=".2f", cmap='coolwarm', square=True, cbar_kws={"shrink": .8})
+
+# Set the title
+plt.title('Heatmap of Correlation Matrix')
+
+# Show the plot
+plt.show()
+
+
+
+
+
+
+
+
+
+
